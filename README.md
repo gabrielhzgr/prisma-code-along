@@ -9,4 +9,6 @@ https://www.prisma.io/docs/orm/prisma-schema/data-model/relations
 https://www.prisma.io/docs/orm/prisma-client/queries/crud
 https://www.prisma.io/docs/orm/prisma-client/using-raw-sql/typedsql
 https://www.prisma.io/docs/orm/prisma-migrate/getting-started
+https://www.prisma.io/docs/orm/prisma-migrate/understanding-prisma-migrate/mental-model
+https://www.prisma.io/docs/guides/database/data-migration
 
