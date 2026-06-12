@@ -4,6 +4,9 @@ CREATE SCHEMA IF NOT EXISTS "public";
 -- CreateEnum
 CREATE TYPE "Role" AS ENUM ('USER', 'ADMIN');
 
+-- CreateEnum
+CREATE TYPE "Status" AS ENUM ('Unknown', 'Draft', 'InProgress', 'InReview', 'Published');
+
 -- CreateTable
 CREATE TABLE "User" (
     "id" SERIAL NOT NULL,
@@ -35,6 +38,7 @@ CREATE TABLE "Post" (
     "title" VARCHAR(255) NOT NULL,
     "content" TEXT,
     "authorId" INTEGER,
+    "status" "Status" NOT NULL DEFAULT 'Unknown',
 
     CONSTRAINT "Post_pkey" PRIMARY KEY ("id")
 );

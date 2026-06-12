@@ -7,7 +7,8 @@
   "type": "module",
   "main": "prisma.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "data-migration:add-status-column": "./prisma/migrations/20260611154500/data-migration.js"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.8.0",

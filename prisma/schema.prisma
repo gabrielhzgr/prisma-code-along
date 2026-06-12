@@ -44,12 +44,12 @@ model Post {
   id         Int        @id @default(autoincrement())
   createdAt  DateTime   @default(now())
   updatedAt  DateTime   @default(now()) @updatedAt
-  published  Boolean    @default(false)
   title      String     @db.VarChar(255)
   content    String?
   author     User?      @relation(fields: [authorId], references: [id])
   authorId   Int?
   categories Category[]
+  status     Status     @default(Unknown)
 }
 
 model Category {
@@ -61,4 +61,12 @@ model Category {
 enum Role {
   USER
   ADMIN
+}
+
+enum Status {
+  Unknown
+  Draft
+  InProgress
+  InReview
+  Published
 }

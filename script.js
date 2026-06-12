@@ -10,10 +10,8 @@ const connectionString = `${process.env.DATABASE_URL}`
 const adapter = new PrismaPg({connectionString})
 const prisma = new PrismaClient({adapter})
 
-
-
 async function main(){
-    /* Already created on previous execution, email is unique for User model
+    //Already created on previous execution, email is unique for User model
     const user = await prisma.user.create({
         data: {
             name: 'Alice',
@@ -33,20 +31,20 @@ async function main(){
             }
         }
     })
-    */
+    
 
     const allUsers = await prisma.user.findMany({include: {posts:true}})
     console.log('----- All users, include posts relation -----');
     console.log(JSON.stringify(allUsers,null,2));
 
-    /* New post without prisma in title or content
+    //New post without prisma in title or content
     const post2 = await prisma.post.create({
         data: {
             title: 'World Cup',
             content: 'Begins on June 10',
             authorId: 2
         }
-    })*/
+    })
     
     const filteredPosts = await prisma.post.findMany({
         where: {
@@ -60,7 +58,7 @@ async function main(){
     console.log('----- All posts -----');
     console.log(allPosts);
 
-    /* Already created on previous execution, email is unique for User model
+    //Already created on previous execution, email is unique for User model
     console.log('----- Update World Cup post -----');
     const post = await prisma.post.update({
         where: {id: 3},
@@ -68,9 +66,9 @@ async function main(){
     })
 
     console.log(await prisma.post.findMany()); 
-    */
     
-    /*
+    
+    
     console.log('--- New User with posts with categories ---');
     const user3 = await prisma.user.create({
         data: {
@@ -90,7 +88,7 @@ async function main(){
             },
         },
     })
-    */
+    
     console.log(JSON.stringify(await prisma.user.findMany({
         include: {posts:{
             include: {categories: true}
@@ -130,8 +128,6 @@ async function main(){
     const usersByIds = await prisma.$queryRaw(getUsersByIds([1,2]))
     console.log(usersByIds);
 
-  
-    
     console.log('----- Typed SQL / Raw  SQL: Users by Ids [3,4]-----');
     
     console.log(await prisma.$queryRaw(getUsersByIds([3,4])));
